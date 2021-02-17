@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.login-container {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-wrapper{
+  width:380px;
+  background:#fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+} 
+
+.login-wrapper .login-title{
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color:#fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  /* background:linear-gradient(-135deg, #19191b, #2b2b2cd3); */
+  background:linear-gradient(-135deg, #10495c, #10495c);
+}
+.login-wrapper form{
+  padding:10px 30px 50px 30px;
+}
+.login-wrapper form .login-field{
+  height:50px;
+  width:100%;
+  margin-top:20px;
+  position: relative;
+}
+.login-wrapper form .login-field input{
+  height:100%;
+  width:100%;
+  outline:none;
+  font-size: 17px;
+  padding-left: 20px;
+  border:1px solid lightgray;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+.login-wrapper form .login-field input:focus,
+form .field input:valid{
+  border-color:#10495c;
+}
+.login-wrapper form .login-field label{
+  position:absolute;
+  top:50%;
+  left:20px;
+  color:#999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform:translateY(-50%);
+  transition: all 0.3s ease;
+}
+.login-wrapper form .login-field input:focus ~ label,
+.login-wrapper form .login-field input:valid ~ label{
+  top:0%;
+  font-size: 16px;
+  color:#10495c;
+  /* color:#ff5e78; */
+  background:#fff;
+  transform:translateY(-50%);
+}
+
+.login-wrapper form .login-field input[type="submit"]{
+  color:#fff;
+  border:none;
+  padding-left:0;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background:linear-gradient(-135deg, #10495c, #10495c);
+  transition:all 0.3s ease;
+}
+.login-wrapper form .login-field input[type="submit"]:active{
+  transform:scale(0.95);
+}
+.login-wrapper form .login-signup-link{
+  color:#262626;
+  margin-top:20px;
+  text-align: center;
+}
+
+.login-wrapper form .login-signup-link a{
+  color:#10495c;
+  text-decoration: none;
+}
+
+.login-wrapper form .login-signup-link a:hover{
+   text-decoration: underline;
+}
+
+/* Error styling */
+
+.form-error {
+  text-align: center;
+  padding: 10px;
+  color: red;
+}

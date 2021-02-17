@@ -1,0 +1,11 @@
+.remove-error-btn {
+    background-color: white;
+    border: transparent;
+    outline: none;
+    padding: 2px;
+    font-size: 15px;
+}
+
+.remove-error-btn:hover {
+    cursor: pointer;
+}

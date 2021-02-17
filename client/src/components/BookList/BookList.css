@@ -1,0 +1,141 @@
+.booklist-container {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.booklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 50px;
+    margin: 50px;
+}
+
+.booklist-heading {
+    color: #10495c;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.pagination {
+    text-align: center;
+    text-decoration: none;
+}
+
+.previous-btn{
+    outline: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.previous-btn:hover, .next-btn:hover, .pagination-no:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.next-btn {
+    outline: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pagination-no {
+    color: black;
+    outline: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+
+/* Sort & Search */
+
+.search-books {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 50px;
+}
+
+.search-input input {
+    width: 400px;
+    padding: 12px 10px;
+    justify-self: center;
+}
+
+.search-btn {
+  padding: 13px;
+  background-color: white;
+  outline: none;
+  border: 1px solid grey;
+}
+
+.sort-box {
+  display: flex;
+}
+
+.sort-box select {
+  background-color: white;
+  color: #999;
+  padding: 12px;
+  width: 300px;
+  margin-left: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  font-size: 16px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.sort-box select:focus {
+  border-color:#10495c;
+}
+
+.sort-box select:focus .container {
+  color: #10495c;
+}
+
+.sort-container:valid {
+  color: #10495c;
+}
+
+.sort-box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sort-box select option {
+  padding: 30px;
+  width: 250px;
+}
+
+.sort-option {
+  color: #10495c;
+}
+
+.page-count {
+  margin-left: 50px;
+  font-size: 18px;
+}
+
+.clear-sort-btn {
+  background-color: #10495c;
+  padding: 12px 10px 0 10px;
+  margin-left: 5px;
+  color: white;
+  border-radius: 25px;
+}
+
+.clear-sort-btn:hover {
+  cursor: pointer;
+}
+
+.clear-sort-btn:active {
+  transform: scale(0.95);
+}

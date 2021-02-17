@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+.profile-container {
+    width: 80vw;
+    font-family: "Poppins", sans-serif;
+    margin: 0 auto;
+    margin-bottom: 100px ;
+}
+
+.profile-heading {
+    color: #10495c;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.profile-flex {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile-name {
+    color: #10495c;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.profile-name .name {
+    color: #f2ad5f;
+    margin-left: 20px;
+}
+
+.profile-details-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30vh;    
+    align-items: center;
+}
+
+.profile-details-flex .detail {
+    color: #10495c;
+    font-weight: 600;
+}
+
+.detail-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* f2ad5f */
+
+/* Books Section */
+
+.profile-books-heading {
+    text-align: center;
+    color: #10495c;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 40px;
+}
+
+.profile-books-table table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.profile-books-table th {
+    background-color: #10495c;
+    color: white;
+    padding: 10px;
+}
+
+.profile-books-table tr{
+    border-bottom: 1px solid black;
+}
+.profile-books-table td {
+
+    padding: 5px;
+}
+
+.profile-page-unauthenticated {
+    font-size: 20px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-spacing: 1px;
+}
+
+.profile-page-unauthenticated .login-link {
+    color: #10495c;
+    text-decoration: underline;
+    margin: 5px;
+}

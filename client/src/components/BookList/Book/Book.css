@@ -1,0 +1,64 @@
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 490px;
+    width: 250px;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 30px;
+    color: black;
+    position: relative;
+}
+
+.book:hover {
+    cursor: pointer;
+    border-color: #10495c;
+    transition: 0.3s all ease-in-out;
+}
+
+.book-image {
+    position: absolute;
+    top: 10px;
+}
+
+.book img {
+    margin-left: auto;
+    width: 200px;
+    height: 300px;
+}
+
+.book-name {
+    font-size: 24px;
+    position: absolute;
+    top: 320px;
+    text-align: center;
+}
+
+.book-author {
+    font-size: 20px;
+    position: absolute;
+    bottom: 80px;
+
+}
+
+/* button */
+
+.get-book {
+    padding: 10px 25px;
+    background-color: #efefef;
+    color: black;
+    margin: auto;
+    position: absolute;
+    bottom: 10px;
+}
+
+.book:hover .get-book{
+    background-color: #10495c;
+    color: #f2ad5f;
+}
+
+a {
+    text-decoration: none;
+}
