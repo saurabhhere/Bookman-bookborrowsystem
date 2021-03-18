@@ -8,6 +8,7 @@ It is designed mainly for IITR but can be used at any level. Fields like enrollm
 ### Key inclusions:
 - Authentication for each individual user.
 - Authentication is must to post or borrow any book.
+- Email verification is must to activate the account.
 - Homepage showing all availaible books posted by people.
 - Individual web pages to showcase individual books to show the description of the book (i.e. owner, a short description about the book, photo of the book, lending price, etc)
 - Webpage where the borrower fills in their details and where submitting the details, emails the owner of the book about the borrower.
