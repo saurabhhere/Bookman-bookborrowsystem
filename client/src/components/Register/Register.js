@@ -6,6 +6,7 @@ import Navbar from '../Navbar/Navbar'
 import ErrorNotice from '../../misc/ErrorNotice';
 import './Register.css'
 import url from '../../misc/url'
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
@@ -29,23 +30,32 @@ const Register = () => {
             await axios.post(`${url.serverURL}/user/register`, newUser).then(res => {
                 // console.log(res);
             });
-            const loginResponse = await axios.post(`${url.serverURL}user/login`, {
-                email, password
-            });
-            // console.log('loginResponse', loginResponse);
-            setUserData({
-                token: loginResponse.data.token,
-                user: loginResponse.data.user
-            });
-            localStorage.setItem("auth-token", loginResponse.data.token);
-            history.push("/");
+            setUsername('');
+            setEmail('');
+            setEnrollment('');
+            setBranch('');
+            setPassword('');
+            setPasswordCheck('');
+            notifyUser();
+            // const loginResponse = await axios.post(`${url.serverURL}user/login`, {
+            //     email, password
+            // });
+            // // console.log('loginResponse', loginResponse);
+            // setUserData({
+            //     token: loginResponse.data.token,
+            //     user: loginResponse.data.user
+            // });
+            // localStorage.setItem("auth-token", loginResponse.data.token);
+            // history.push("/");
         } catch (error) {
-            console.log('error', error.response);
             if (error.response){
                 error.response.data.msg && setError(error.response.data.msg)
             }
         }
     };
+    const notifyUser = () => {
+        toast.info('Please check your mail', {position: toast.POSITION.TOP_CENTER});
+    }
 
     return (
         <>

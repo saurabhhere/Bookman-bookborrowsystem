@@ -86,7 +86,8 @@ const Profile = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {booksRegistered.map((book) => (
+                                {booksRegistered.length ? (
+                                    booksRegistered.map((book) => (
                                         <tr key={book._id}>
                                             <td>{book.book}</td>
                                             <td>{book.author}</td>
@@ -94,7 +95,10 @@ const Profile = () => {
                                             <td>{book.email}</td>
                                             <td>{book.mobile}</td>
                                         </tr>
-                                    ))}
+                                    ))
+                                ) : (
+                                    "No books Registered by you yet."
+                                )}
                                 </tbody>
                             </table>
 

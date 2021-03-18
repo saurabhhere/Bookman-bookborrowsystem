@@ -13,6 +13,7 @@ import Modal from 'react-modal';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import url from './misc/url'
+import AccountActivate from './components/AccountActivate/AccountActivate';
 
 Modal.setAppElement('#root')
 
@@ -59,6 +60,7 @@ function App() {
           <Route path="/user/register" exact component={Register} />
           <Route path="/user/profile" exact component={Profile}/>
           <Route path="/book/get/:id" exact component={BookPage} />
+          <Route path="/authentication/activate/:token" exact component={AccountActivate} />
         </Switch>
       </UserContext.Provider>
       </Router>

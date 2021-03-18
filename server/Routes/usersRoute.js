@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require("../middleware/auth");
 const UserModel = require("../models/users");
+const nodemailer = require('nodemailer');
 
 // Register
 router.post("/register", async (req, res) => {
@@ -37,32 +38,68 @@ router.post("/register", async (req, res) => {
         }
         const existingUser = await UserModel.findOne({email: email});
         if (existingUser){
-            res.status(400).json({
+            return res.status(400).json({
                 msg: "An account with this email already exists"
             });
         }
 
         const existingEnrollment = await UserModel.findOne({enrollment: enrollment});
         if (existingEnrollment){
-            res.status(400).json({
+            return res.status(400).json({
                 msg: "An account with this enrollment already exists"
             });
         }
 
         if (!username) username=email;
-        const salt = await bcrypt.genSalt();
-        const passwordHash = await bcrypt.hash(password, salt);
-        const newUser = new UserModel({
-            username,
-            email,
-            enrollment,
-            branch,
-            year,
-            password: passwordHash,
 
+        const token = jwt.sign({ username, email, password, enrollment, branch, year }, process.env.JWT_SECRET, { expiresIn: '20m' });
+
+        let transporter = nodemailer.createTransport({
+            service: "Yahoo",
+            secure: false,
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD,
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
         });
-        const savedUser = await newUser.save();
-        res.status(200).json(savedUser);
+
+        const mail = `
+            <h2>Please click on given link to activate your account</h2>
+            <p>${process.env.CLIENT_URL}/authentication/activate/${token}</p>    
+        `
+
+        let mailOptions = {
+            from: '"Bookman" <saurabhguptajpr@yahoo.in>',
+            to: email,
+            subject: "Account Activation",
+            html: mail
+        }
+
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent:', info.messageId);
+            return res.status(200).json({ message: "Email has been sent, kindly activate your account" });
+        })
+
+        // const salt = await bcrypt.genSalt();
+        // const passwordHash = await bcrypt.hash(password, salt);
+        // const newUser = new UserModel({
+        //     username,
+        //     email,
+        //     enrollment,
+        //     branch,
+        //     year,
+        //     password: passwordHash,
+
+        // });
+        // const savedUser = await newUser.save();
+        // res.status(200).json(savedUser);
     } catch (error) {
         res.status(500).json({error: error.message});
     }
@@ -90,6 +127,7 @@ router.post("/login", async (req, res) => {
                 msg: "Invalid credentials"
             });
         }
+        // we can add expiresIn parameter in sec
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET);
         res.json({
             token, user: {
@@ -147,6 +185,44 @@ router.get("/profile/:id", async(req, res) => {
     } catch (error) {
         res.status(400).json({
             message: error.message
+        })
+    }
+})
+
+router.post("/email-activate", async (req, res) => {
+    try {
+        const { token } = req.body;
+        if (token) {
+            jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+                if (err){
+                    return res.status(400).json({ error: "Incorrect or expired Link." })
+                }
+                const { username, email, password, enrollment, branch, year } = decodedToken;
+                const existingUser = await UserModel.findOne({ email: email });
+                if (existingUser) {
+                    res.status(400).json({
+                        msg: "An account with this email already exists"
+                    });
+                }
+                const salt = await bcrypt.genSalt();
+                const passwordHash = await bcrypt.hash(password, salt);
+                const newUser = new UserModel({
+                    username,
+                    email,
+                    enrollment,
+                    branch,
+                    year,
+                    password: passwordHash,
+                });
+                const savedUser = await newUser.save();
+                return res.status(200).json(savedUser);
+            })
+        } else {
+            return res.json({ error: "Error in verifying account. Please try again" })
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
         })
     }
 })

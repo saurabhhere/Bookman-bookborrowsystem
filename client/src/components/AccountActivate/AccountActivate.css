@@ -1,0 +1,42 @@
+.account-activate-container {
+    background-color: #10495c !important;
+    height: 100vh;
+}
+
+.bookman-logo {
+    padding: 20px;   
+}
+
+.account-activate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.account-activate-flex {
+    /* align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh; */
+    color: #fff;
+    font-size: 22px;
+}
+
+
+.activate-btn {
+    background-color: #f2ad5f;
+    color: #fff;
+    border: 2px solid transparent;
+    padding: 12px 20px;
+    margin-top: 50px;
+    width: 150px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.activate-btn:hover {
+    background-color: transparent;
+    border: 2px solid #f2ad5f;
+    transition: 0.3s all ease-in;
+}
